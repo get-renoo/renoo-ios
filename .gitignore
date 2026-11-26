@@ -1,0 +1,15 @@
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.worktrees/
+# Secrets, just in case
+.env
+.env.*
+*.pem
+*.p8
+*.key
+# Local Flutter test app (visual checks only; not part of the SDK repo)
+test-apps/
