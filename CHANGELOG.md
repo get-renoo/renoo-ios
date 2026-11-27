@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.1] - 2026-11-27
 
 ### Fixed
 
@@ -28,4 +28,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Debugging helpers: `Renoo.addEventObserver(_:)`, `Renoo.removeEventObserver(_:)` and `Renoo.queuedEvents()`.
 - Privacy manifest declaring UserDefaults as the only required-reason API and the data the SDK collects.
 
+[0.1.1]: https://github.com/get-renoo/renoo-ios/releases/tag/0.1.1
 [0.1.0]: https://github.com/get-renoo/renoo-ios/releases/tag/0.1.0
