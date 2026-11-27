@@ -3,7 +3,7 @@ import Foundation
 /// The public entry point. Every method is safe to call from any thread, never throws,
 /// never blocks, and does nothing until `configure` has succeeded.
 public enum Renoo {
-    public static let sdkVersion = "0.1.0"
+    public static let sdkVersion = "0.1.1"
 
     private static let lock = NSLock()
     private static var _core: SDKCore?

@@ -24,13 +24,27 @@ enum ScreenFilter {
         let raw = candidate.className
         if raw.isEmpty || isSystemClassName(raw) { return nil }
         let name = stripModule(raw)
-        if wrapperHostClassNames.contains(name) { return nil }
+        if wrapperHostClassNames.contains(name) || isWrapperInternalClassName(name) { return nil }
         return name.isEmpty ? nil : name
     }
 
     /// The single native controller a cross-platform framework renders everything inside.
     /// It is not a screen: the framework's wrapper reports the real screens by name.
     static let wrapperHostClassNames: Set<String> = ["FlutterViewController"]
+
+    /// Objective-C class prefixes of React Native (`RCT`) and react-native-screens (`RNS`). Their
+    /// view controllers (`RNSScreen` for every native-stack screen, `RCTFabricModalHostViewController`
+    /// for a modal…) are plumbing: the React Native wrapper reports the real screens by name.
+    static let wrapperInternalClassPrefixes = ["RNS", "RCT"]
+
+    /// `RNSScreen`, `RCTModalHostViewController`: a known prefix followed by a capital letter, the
+    /// Objective-C naming pattern. The capital keeps an app's own `RNSettingsViewController` a screen.
+    static func isWrapperInternalClassName(_ name: String) -> Bool {
+        wrapperInternalClassPrefixes.contains { prefix in
+            guard name.hasPrefix(prefix), let next = name.dropFirst(prefix.count).first else { return false }
+            return next.isUppercase
+        }
+    }
 
     /// Private and public UIKit / SwiftUI classes. UIKit and private classes are matched by name as
     /// a backstop in case the bundle check misses one (e.g. classes created at runtime).
