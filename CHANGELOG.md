@@ -4,7 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.0] - Unreleased
+## [Unreleased]
+
+### Fixed
+
+- Automatic screen tracking no longer reports React Native's own view controllers as screens (`RNSScreen` from react-native-screens for every native-stack screen, and React Native's modal hosts). The React Native wrapper reports those screens by name.
+
+## [0.1.0] - 2026-11-26
 
 ### Added
 
